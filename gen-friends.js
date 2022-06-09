@@ -19,7 +19,7 @@ fs.readFile(infile, (err, data) => {
     let usersLength = users.length;
     let usersWithFriends = [];
     users.forEach(user => {
-        let friendCount = Math.floor(Math.random() * 25);
+        let friendCount = Math.floor(Math.random() * 10);
         user.friends = genFriendsIds(friendCount, usersLength);
         usersWithFriends.push(user);
     });
