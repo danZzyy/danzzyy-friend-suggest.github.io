@@ -1,4 +1,5 @@
 import users from '../users-with-friends.json';
+import * as _ from 'lodash';
 
 function getUser(id) {
     return users.find(user => user.id === id);
@@ -37,4 +38,20 @@ function getUsersVis()  {
     };
 }
 
-export  { getUser, getUsers, getUsersVis };
+function getSuggestedFriends(id)  {
+    let user = getUser(id);
+    let suggestedFriends =  [];
+    users.forEach(u => {
+        if(u.id !== user.id && !user.friends.includes(u.id)) {
+            let mutualFriends = _.intersection(u.friends, user.friends);
+            suggestedFriends.push({
+                mutualFriends: mutualFriends.length,
+                user: u
+            });
+        }
+    });
+
+    return suggestedFriends.sort((a,b) => (a.mutualFriends > b.mutualFriends) ? 1  : -1 );
+}
+
+export  { getUser, getUsers, getUsersVis, getSuggestedFriends };
