@@ -2,13 +2,13 @@ import users from '../users-with-friends.json';
 import * as _ from 'lodash';
 
 function getUser(id) {
-    return users.find(user => user.id === id);
+    return _.find(users, u => u.id == id);
 }
 
 function getUsers(ids) {
     let userList = [];
     ids.forEach(id => {
-        userList.push(users.find(user => user.id === id));
+        userList.push(_.find(users, u => u.id == id));
     });
     return userList;
 }

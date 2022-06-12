@@ -1,10 +1,13 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
-import {getUsersVis} from './api/api';
+import {getUsersVis, getUser} from './api/api';
 import Graph from "react-graph-vis";
+import Login from "./components/login/login";
 
 function App() {
   const [graph, setGraph] = useState(getUsersVis());
+  const [user, setUser] = useState({id:  '', first_name: '', last_name: ''});
+
   const options = {
     layout: {
       hierarchical: false
@@ -16,6 +19,14 @@ function App() {
     physics: false
   };
 
+  /**
+   * <Graph
+        graph={graph}
+        options={options}
+        events={events}
+        getNetwork={network => { }}
+      ></Graph>
+   */
   const events = {
     hoverNode: (e) => {
       /** 
@@ -48,14 +59,19 @@ function App() {
     }
   };
 
+  const loginEvent = (id) => {
+    console.log(getUser(id));
+    setUser(getUser(id));
+    console.log(id);
+  };
+
   return (
     <div className="App">
-      <Graph
-        graph={graph}
-        options={options}
-        events={events}
-        getNetwork={network => { }}
-      ></Graph>
+      <Login loginEvent={loginEvent}>
+      </Login>
+      <div>
+        {user.first_name} {user.last_name}
+      </div>
     </div>
   );
 }
