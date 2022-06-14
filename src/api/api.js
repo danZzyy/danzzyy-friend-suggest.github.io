@@ -44,14 +44,16 @@ function getSuggestedFriends(id)  {
     users.forEach(u => {
         if(u.id !== user.id && !user.friends.includes(u.id)) {
             let mutualFriends = _.intersection(u.friends, user.friends);
-            suggestedFriends.push({
-                mutualFriends: mutualFriends.length,
-                user: u
-            });
+            if(mutualFriends.length > 0) {
+                suggestedFriends.push({
+                    mutualFriends: mutualFriends.length,
+                    user: u
+                });
+            }
         }
     });
 
-    return suggestedFriends.sort((a,b) => (a.mutualFriends > b.mutualFriends) ? 1  : -1 );
+    return suggestedFriends.sort((a,b) => (a.mutualFriends < b.mutualFriends) ? 1  : -1 );
 }
 
 export  { getUser, getUsers, getUsersVis, getSuggestedFriends };

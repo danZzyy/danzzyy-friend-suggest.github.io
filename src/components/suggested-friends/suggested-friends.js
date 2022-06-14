@@ -3,14 +3,13 @@ import React, {useState, useEffect} from 'react';
 import  UserCard from '../user-card/user-card';
 
 function SuggestedFriends({user})  {
-    const [sugFriends, setSugFriends] = useState([]);
-    setSugFriends(getSuggestedFriends(user.id)); 
-
+    const [sugFriends, setSugFriends] = useState(getSuggestedFriends(user.id));
+    console.log(sugFriends);
     return  (
         <div>
             {
                 sugFriends.map(sf => (
-                    <UserCard user={sf}></UserCard>
+                    <UserCard userProp={sf} key={sf.user.id}></UserCard>
                 ))
             }
         </div>
