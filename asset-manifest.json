@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/danzzyy-friend-suggest.github.io/static/css/main.9af9908a.css",
-    "main.js": "/danzzyy-friend-suggest.github.io/static/js/main.765d31ad.js",
+    "main.css": "/danzzyy-friend-suggest.github.io/static/css/main.ffc954ef.css",
+    "main.js": "/danzzyy-friend-suggest.github.io/static/js/main.c9286bf2.js",
     "static/js/787.76f8e82c.chunk.js": "/danzzyy-friend-suggest.github.io/static/js/787.76f8e82c.chunk.js",
     "index.html": "/danzzyy-friend-suggest.github.io/index.html",
-    "main.9af9908a.css.map": "/danzzyy-friend-suggest.github.io/static/css/main.9af9908a.css.map",
-    "main.765d31ad.js.map": "/danzzyy-friend-suggest.github.io/static/js/main.765d31ad.js.map",
+    "main.ffc954ef.css.map": "/danzzyy-friend-suggest.github.io/static/css/main.ffc954ef.css.map",
+    "main.c9286bf2.js.map": "/danzzyy-friend-suggest.github.io/static/js/main.c9286bf2.js.map",
     "787.76f8e82c.chunk.js.map": "/danzzyy-friend-suggest.github.io/static/js/787.76f8e82c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9af9908a.css",
-    "static/js/main.765d31ad.js"
+    "static/css/main.ffc954ef.css",
+    "static/js/main.c9286bf2.js"
   ]
 }
