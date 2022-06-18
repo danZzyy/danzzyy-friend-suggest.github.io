@@ -1,1 +1,1 @@
-# danzzyy-friend-suggest.github.io
+friend-suggest
