@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import users from '../../users-with-friends.json';
 
 function Login({loginEvent}) {
-    const [userId, setUserId] = useState();
+    const [userId, setUserId] = useState(-1);
     const [password, setPassword] =  useState();
 
     const handleUserSelect = (event) => {
@@ -15,7 +15,8 @@ function Login({loginEvent}) {
             <div>
                 <label>
                     User
-                    <select value={userId} onChange={handleUserSelect}>
+                    <select placholder="Select your user" value={userId} onChange={handleUserSelect}>
+                        <option value='-1' disabled selected>Select your user</option>
                         {
                             users.map(u => (
                                 <option value={u.id} key={u.id}>{`${u.first_name} ${u.last_name}`}</option>
@@ -27,9 +28,9 @@ function Login({loginEvent}) {
             <div>
                 <label>
                     Password
-                    <input type="text" value={password}/>
+                    <input type="password" value={password}/>
                 </label>
-                <button onClick={() => loginEvent(userId)}>Login</button>
+                <button disabled={userId === -1} onClick={() => loginEvent(userId)}>Login</button>
             </div>
         </div>
     );

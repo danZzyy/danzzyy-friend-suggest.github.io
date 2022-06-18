@@ -1,0 +1,27 @@
+nav ul {
+    align-items: left;
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    background-color: black;
+    width: 100%;
+}
+
+nav li {
+    display: inline;
+}
+
+.tab  {
+    padding: 20px;
+    font-size: 16px;
+}
+
+.active {
+    background-color: lightgray;
+    color: black;
+}
+
+.inactive {
+    background-color: black;
+    color: white;
+}

@@ -4,11 +4,16 @@ import {getUsersVis, getUser, getSuggestedFriends} from './api/api';
 import Graph from "react-graph-vis";
 import Login from "./components/login/login";
 import SuggestedFriends from './components/suggested-friends/suggested-friends';
+import Menu from './components/menu/menu';
 
 function App() {
+  const [tabs, setTabs]  =  useState(['Profile', 'Friends', 'Suggested Friends']);
   const [graph, setGraph] = useState(getUsersVis());
   const [user, setUser] = useState({id:  '', first_name: '', last_name: ''});
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [activeTab, setActiveTab]  =  useState(0);
+
+  let pageContents = '';
   const options = {
     layout: {
       hierarchical: false
@@ -17,7 +22,10 @@ function App() {
       color: "#000000"
     },
     height: "900px",
-    physics: false
+    physics: false,
+    interaction: {
+      zoomView: false
+    }
   };
 
   /**
@@ -65,19 +73,43 @@ function App() {
     setUserLoggedIn(true);
   };
 
+  const clickActiveTab =  (tabIndex) => {
+    setActiveTab(tabIndex);
+    console.log(tabIndex);
+    
+  }
   return (
     <div className="App">
+      <h2 class="title">Friendship App</h2>
       {!userLoggedIn ?
         <Login loginEvent={loginEvent}>
         </Login>
         : <></>
       }
-      <div>
-        {user.first_name} {user.last_name}
-      </div>
       {userLoggedIn ?
-        <SuggestedFriends user={user}>
-        </SuggestedFriends>
+        <div>
+          <Menu tabsProp={tabs} selectEvent={clickActiveTab}></Menu>
+          <div className={activeTab === 0 ? 'active-content' : 'inactive-content'}>
+            <div>
+              {user.first_name} {user.last_name}
+            </div>
+            <div>
+              <img src={user.avatar}/>
+            </div>
+          </div>
+          <div className={activeTab === 1 ? 'active-content' : 'inactive-content'}>
+          <Graph
+            graph={graph}
+            options={options}
+            events={events}
+            getNetwork={network => { }}
+          ></Graph>
+          </div>
+          <div className={activeTab === 2 ? 'active-content' : 'inactive-content'}>
+            <SuggestedFriends user={user}>
+            </SuggestedFriends>
+          </div>
+        </div>
         : <></>
       }
     </div>
