@@ -2,7 +2,7 @@
   "name": "friend-suggest",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://danzzyy.github.io/danzzyy-friend-suggest.github.io/",
+  "homepage": "https://danzzyy.github.io/friend-suggest",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
